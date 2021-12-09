@@ -9,3 +9,14 @@ services:
         - ./movie_scripts:/docker-entrypoint-initdb.d
       environment:
         MYSQL_ROOT_PASSWORD: pw
+
+  tvshow:
+    image: mysql
+    container_name: TvShowDB
+    ports:
+        - "3307:3306"
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./tvshow_scripts:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: pw
